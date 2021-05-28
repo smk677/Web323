@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr=[
+        {
+           name:'zs',
+           age:20 
+        },
+        {
+           name:'ls',
+           age:18 
+        },
+        {
+           name:'ww',
+           age:13 
+        },
+        {
+           name:'ll',
+           age:25
+        },
+        {
+           name:'wb',
+           age:22
+        },
+        {
+           name:'jg',
+           age:12
+        },
+        {
+           name:'yj',
+           age:8
+        }
+    ]
+       //需求1：获取数组中，年龄大于20岁的总体个数
+       var sum=0;
+      /*  arr.forEach(function(item,index){
+          if(item.age>20){
+              sum++;
+          }
+       })
+       console.log(sum) */
+     /*  var arrRe=arr.reduce(function(preValue,item){
+        // console.log(preValue,item)
+        if(item.age>20){
+            return  ++preValue;
+        }else{
+            return  preValue;
+        }
+       },0)
+       console.log(arrRe) */
+
+    //需求2：根据一个数组,得到一个对象. 得到的新的对象键,要求是数组中name属性的值
+      var newObj=arr.reduce(function(preValue,item){
+           preValue[item.name]=item.age
+           return preValue
+      },{})
+      console.log(newObj)
+   </script>
+</body>
+</html>

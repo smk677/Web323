@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        const oBtn=document.getElementById('btn')
+        //执行的顺序
+        // 1.创建一个promise实例对象
+        //2.new Promise的同步回调立刻执行
+        //  3.执行异步代码
+        // 4.执行promise.then方法，此时then的两个回调还没有进入队列
+        // 什么时候状态发生改变，什么时候将then的两个回调放入队列中
+        // 5.当定时器计时结束,调用resolve()方法改变promise的状态为成功,把then的第一个回调函数加入队列中,还没有执行
+        // 6.继续执行resolve()方法后面的代码,执行完毕,表示主线程代码执行完毕
+        // 7.此时从队列中将then的第一个回调函数放入主线程中执行
+        
+        oBtn.onclick=function(){
+         const promise=new Promise((resolve,reject)=>{//参数一是成功，参数二是失败
+         console.log('Promise的回调函数同步执行了')
+
+         //这是异步执行
+         setTimeout(function(){
+             console.log('异步执行成功了');
+             //resolve()做了两件事
+            //  1.改变promise的状态(成功)
+            // 2.传入的值是promise的结果(值)
+             resolve('123');//成功之后返回promise的状态和结果的值（resolve(值)），改为成功(fulfill...)，
+             reject('345')
+             //如果同时返回成功和失败，那么谁在前谁生效，另一个相当于没写，因为promise的状态只允许修改一次
+             console.log(promise)
+           },1000)
+        })
+      
+        promise.then(
+            (value)=>{
+              //当promise的状态为成功时执行
+              console.log('promise执行成功了',value)
+            },
+            (value)=>{
+              //当promise的状态为失败时执行
+              console.log('promise执行失败了',value)
+            }
+        )//捕获promise的状态，有两个参数(回调函数)，参数一：成功时，执行什么，参数二：失败时执行什么
+        }
+      
+    </script>
+</body>
+</html>

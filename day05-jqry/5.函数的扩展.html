@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+         ES6 之前，不能直接为函数的参数指定默认值,只能采用变通的方法
+         ES6 允许为函数的参数设置默认值，即直接写在参数定义的后面
+        */
+       //当传入的参数是undefined或者不传，则会用函数参数指定的默认值
+        /* function fn2(a, b = "world") {
+            console.log(a, b);
+        }
+        fn2("hello", "");
+        fn2("hello");
+        fn2("hello",undefined); */
+
+        /* 
+        ES6 引入 rest 参数（形式为`...变量名`），用于获取函数的多余参数
+        */
+       /* function fn(a,b,...args){//...变量名接受多余的参数
+         console.log(a,b,...args)
+       }
+       fn(1,2,3,'a','d') */
+
+       /* 
+         箭头函数:
+            格式：函数名=()=>{}
+          只有一个参数可以省略括号，如果没有参数或者有多个参数，参数的括号不能省略
+          
+          当函数体只有一个语句时，可以省略花括号，并且会自动return这行代码，当函数体不是一句话的时候，不能省略
+
+          箭头函数没有自己的this，如果有是外部函数的this
+
+          箭头函数不能用于构造函数，也就是不能使用new关键字调用
+
+          箭头函数没有arguments对象
+       */
+      /*  let f1 = n => n + 1;
+        console.log(f1(2)) */
+    </script>
+</body>
+</html>

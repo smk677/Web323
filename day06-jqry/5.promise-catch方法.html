@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        /* 
+         catch()方法:只有在promise的状态为失败才会生效,里面只有一个回调函数
+         catch也返回一个promise对象,promise对象的状态由catch中回调函数的结果决定
+        */
+       let oBtn=document.getElementById('btn')
+       oBtn.onclick=function(){
+           let promise=new Promise((resolve,reject)=>{
+               //先同步回调
+               console.log('Promise的同步回调执行了')
+
+               //异步执行
+               setTimeout(function(){
+                //   resolve('成功了')
+                reject('失败')
+               },1000)
+           })
+           console.log(promise)
+          /*  let promise2=promise.then(
+               (value)=>{
+                //promise的状态为成功时执行
+                console.log('promise执行成功了',value)
+                console.log(promise)
+               },
+               (value)=>{
+                //promise的状态为失败时执行
+                console.log('promise执行失败了',value)
+               }) */
+
+                // 注意: 如果像下面这种写法去写. 那么promise成功则调用then的回调. 如果promise失败,就调用catch的回调
+                // 注意: 如果使用了catch,都是在then后面直接跟一个catch.并且then的第二个回调就不声明了.
+               let promise2=promise.then(
+               (value)=>{
+                //promise的状态为成功时执行
+                console.log('promise执行成功了',value)
+                console.log(promise)
+               })
+               .catch(
+                   (value)=>{
+                      console.log('promise执行失败了',value)
+                   })
+                .finally(
+                    ()=>{
+                        console.log('不管promise成功还是失败都会调用')
+                })
+            console.log(promise2)
+       }
+    </script>
+</body>
+</html>

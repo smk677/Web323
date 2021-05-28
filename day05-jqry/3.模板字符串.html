@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let data = {
+           message: {
+             title: '今天天气真的很好',
+             todo: '打台球',
+             time: '时间2020.3.25',
+             isLike: false,
+          },
+         }
+         //需求: 根据,动态创建div标签,div里面是多个p标签,然后渲染到页面上]
+
+         let str=`<div>
+                    <h2>${data.message.title}</h2>
+                    <p>${data.message.todo}</p>
+                    <p>${data.message.time}</p>
+                    <p>${data.message.isLike?'我喜欢':'滚蛋！！'}</p>
+                  </div>`
+         document.documentElement.innerHTML=str;
+         //${}可以书写任何表达式
+        //  表达式：
+                //  字面量（[]/{}/function()/true/1/'')
+                //  变量和常量
+                //  运算
+        // 不是表达式：分支语句（if）、循环语句;声明变量和常量;
+
+
+        /* 
+         字符串新增的方法
+        */
+       /* let {log}=console;
+       let message='   hellow world   '
+       log(message)
+
+       //去空格
+       log(message.trim())//去前后空格
+       log(message.trimStart())//去除开头的空格
+       log(message.trimEnd())//去除结尾的空格 */
+
+
+       //判断字符串
+      /*  let {log}=console
+       let message='hellow  world'
+       log(message.startsWith('he'))//判断开头是否包含he字符串 true
+       log(message.endsWith('he'))//判断结尾是否包含he字符串 false
+       log(message.endsWith('ld'))//判断结尾是否包含he字符串  true
+       log(message.includes('ld'))//判断字符串是否包含he字符串  true */
+
+       //repeat(次数):重复当前字符串,可以规定次数
+      /*  let message="海静，你好s啊"
+       let{log}=console
+       log(message.repeat(10)) */
+
+       //padStart():补充字符串的长度，当字符串不够某个长度的时候，在前边补充任意字符
+    //    padEnd():补充字符串的长度，当字符串不够某个长度的时候，在后面补充任意字符
+    let message = "这个是密码";
+    let{log}=console
+    log(message.padStart(8, '#'))
+    log(message.padEnd(8, '#'))
+    log(message.padStart(8, '#*2222'))
+    </script>
+</body>
+</html>

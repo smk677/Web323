@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        async 用于声明一个 function 是异步的，而 await 用于等待一个异步方法执行完成
+         当给一个函数添加async关键字,这个函数就相当于变成一个异步函数
+        */
+      async function fn(){
+         /* let  res=await new Promise((resolve,reject)=>{
+             console.log(1)
+               setTimeout(()=>{
+                resolve('123')
+               },1000)
+           }) */
+        let res = await false
+        console.log(res)
+        console.log(2)
+        console.log(3)
+       }
+       fn()
+       console.log(4)
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arry=[{name:'ls'},{age:19}]
+        //将js对象转化为jSON格式的字符串
+        var json=JSON.stringify(arry);
+        console.log(json)
+        
+        //将jSON格式的字符串转化为js对象
+        var jso=JSON.parse(json)
+        console.log(jso)
+    </script>
+</body>
+</html>

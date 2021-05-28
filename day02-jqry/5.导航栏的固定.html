@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      img {
+        vertical-align: top;
+      }
+
+      .main {
+        margin: 0 auto;
+        width: 1000px;
+        padding-top: 10px;
+      }
+
+      .fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top" id="topPart">
+      <img src="imgs/top.png" alt="" />
+    </div>
+    <div class="nav" id="navBar">
+      <img src="imgs/nav.png" alt="" />
+    </div>
+    <div class="main" id="mainPart">
+      <img src="imgs/main.png" alt="" />
+    </div>
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+      //  需求: 当页面滚动出去的距离是top的高度,则让nav固定定位.如果滚动出去的距离小于top的高度,就让nav取消固定定位
+      //1.监听滚动条事件
+      $(window).scroll(function(){
+          //获取导航栏的高度
+          var height=$('.top').height();
+          //获取滚动条滚动的距离
+          var heightTo=$(window).scrollTop();
+           console.log(heightTo)
+          if(heightTo>=height){
+              $('.nav').addClass('fixed');
+              $('.main').css('margin-top',$('.nav').height())
+          }else{
+              $('.nav').removeClass('fixed')
+              $('.main').css('margin-top',0)
+          }
+      })
+    </script>
+  </body>
+</html>

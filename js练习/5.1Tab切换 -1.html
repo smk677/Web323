@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 600px;
+            margin: 50px auto;
+            border: 1px solid #000;
+        }
+
+        #title {
+            display: flex;
+        }
+
+        #title h2 {
+            width: 198px;
+            border: 1px solid #000;
+            font-size: 18px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        #title h2.active {
+            background-color: red;
+            color: #fff;
+        }
+
+        #con {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        #con li {
+            width: 600px;
+            height: 300px;
+            text-align: center;
+            font-size: 40px;
+            line-height: 300px;
+            font-weight: bold;
+        }
+
+        #con li:nth-child(1) {
+            background-color: lawngreen;
+        }
+
+        #con li:nth-child(2) {
+            background-color: magenta;
+        }
+
+        #con li:nth-child(3) {
+            background-color: navajowhite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div id="title">
+            <h2 class="active">标题1</h2>
+            <h2>标题2</h2>
+            <h2>标题3</h2>
+        </div>
+        <ul id="con">
+            <li>内容1</li>
+            <li>内容2</li>
+            <li>内容3</li>
+        </ul>
+    </div>
+    <script>
+        let oTitle=document.getElementById('title')
+        let oHis=document.querySelectorAll('h2')
+       
+        let oCon=document.getElementById('con')
+        let oLis=document.querySelectorAll('li')
+
+        let timer=null;
+        oHis.forEach(function(item,index){
+            item.onclick=function(){
+                clearInterval(timer)
+              oHis.forEach(function(item,index){
+                  item.classList.remove('active')
+              })
+              this.classList.add('active')
+
+              //获取oCon滚动条的初始位置
+              let oScollTop=oCon.scrollTop;
+
+              //获取滚动条结束位置
+              let oScollEnd=(oLis[0].clientHeight)*index
+
+              //初始步数
+              let staStep=0
+
+              //总共能走的步数
+              let allStep=40
+
+              //每一步走的距离
+              let everyStep=(oScollEnd-oScollTop)/allStep
+
+              timer=setInterval(function(){
+                staStep++;
+                //判断临界值
+                if(staStep>=allStep){
+                    clearInterval(timer)
+                }
+                oScollTop+=everyStep;
+                oCon.scrollTo(0,oScollTop)
+              },10)
+            }
+        })
+    </script>
+</body>
+</html>

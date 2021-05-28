@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">ssss</div>
+    <span>123</span>
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        // 1. 创建dom对象
+         // 通过jquery创建
+         //格式：$("html格式的字符串")
+         console.log($("<p>这是一个p标签</p>"))
+        // 2. 往指定标签中添加子节点
+        //    $("#box").append($("<p>这是一个p标签</p>"));//在元素的子元素后面添加
+        //    $("#box").append(document.createElement("p"));
+        //    $("#box").append("<h1>hhhh</h1>");
+        //    $("#box").append("<p>hhhh</p>");
+        //    $("#box").append($("span"));
+
+           $("#box").prepend($("<p>这是一个p标签</p>"))//在元素的子元素前面添加
+           $("#box").after($("<p>这是一个p标签</p>"))//在元素的兄弟元素后面添加
+           $("#box").before($("<p>这是一个before标签</p>"))//在元素的兄弟元素前面面添加
+           
+           $("#box").html($("<p>这是一个html标签</p>"))//替换元素里面的元素和内容
+           
+         // html的其他使用方式
+         console.log($("#box").html())//返回box里面的内容
+         $("#box").html("")//清空box的内容,无法清除那些元素注册过的事件，它们依旧占用着内存空间
+        //  $("#box").empty()//清空box的内容,会清除内部所有元素，及内部所有元素注册的事件，节省内存空间
+        //  $("#box").remove()//清空box的内容,把box从节点树中删除了(完全删除)
+    </script>
+</body>
+</html>

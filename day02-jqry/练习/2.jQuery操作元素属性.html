@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <input id="check" type="text">
+    <script src="../jquery-1.12.4.js"></script>
+    <script>
+        /* 
+        js的原生操作元素属性的方式？
+         getAttribute/setAttribute:可以操作所有属性
+        //  data-xxx dataset :操作自定义属性
+        */
+        // jQuery中操作属性的方式
+        //  attr()可以操作所有属性
+        //prop():主要用来操作checked,selected，disabled这类属性，可以返回布尔值，可以设置和获取
+        // console.log($('#box').attr('id'))//获取对应属性名的属性值
+        // console.log($('#box').attr('class','cc'))//创建元素的属性名和属性值
+      /*   console.log($('#box').attr({
+            index:1,
+            class:'one'
+        })) *///设置某个元素多个 key 属性的属性值
+        // $('#box').removeAttr('class')//删除某个属性
+        // $('#box').prop('index', 1)//设置某个元素 key 属性的属性值
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">打开</button>
+    <button id="btn2">关闭</button>
+    <script>
+        var oBtn1=document.querySelector('#btn1')
+        var oBtn2=document.querySelector('#btn2')
+        oBtn1.onclick=function(){
+            //参数1：地址，参数2：打开的方式，参数3：窗口的信息，如：大小，位置
+            //返回值是窗口的名字
+            // window.open('http://www.2.cn','_blank')
+            window.open('http://www.2.cn','_self')
+        }
+        oBtn2.onclick=function(){
+            // newWin.close()
+            window.close()
+        }
+    </script>
+</body>
+</html>

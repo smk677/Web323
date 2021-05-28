@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        const oBtn=document.getElementById('btn')
+        oBtn.onclick=function(){
+         const promise=new Promise((resolve,reject)=>{//参数一是成功，参数二是失败
+          //如果在同步回调中,代码出现错误,promise状态会直接返回reject
+          // console.log(a)
+          console.log('Promise的回调函数同步执行了')
+
+         //这是异步执行
+         setTimeout(function(){
+           //如果在回调中代码报错,整个代码停止运行
+            // console.log(a)
+             console.log('异步执行成功了');
+             resolve('123');//成功之后返回promise的状态和结果的值（resolve(值)），改为成功(fulfill...)，
+            //  reject('345')
+             //如果同时返回成功和失败，那么谁在前谁生效，另一个相当于没写，因为promise的状态只允许修改一次
+            //  console.log(promise)
+           },1000)
+        })
+         console.log(promise)
+        /* 
+          promise.then:会返回一个新的promise对象
+        */
+       let promise2=promise.then(//捕获promise的状态，有两个参数(回调函数)，参数一：成功时，执行什么，参数二：失败时执行什么
+            (value)=>{
+              // 如果promise的回调中代码报错了,会导致返回的promise的状态直接被修改为失败
+              console.log(a)
+              //当promise的状态为成功时执行
+              console.log('promise执行成功了',value)
+              return new Promise((resolve,reject)=>{
+                reject();
+              })
+            },
+            (value)=>{
+              //当promise的状态为失败时执行
+              console.log('promise执行失败了',value)
+            }
+       )
+       .then(
+         (value)=>{
+          console.log('promise2', '成功了', value)
+         },
+         (value)=>{
+          console.log('promise2', '失败了', value)
+         })
+      console.log(promise2)
+        
+      }
+      // 总结: 第一个promise的状态,只会决定调用自己的then的哪个回调. 对应的回调的返回结果,才会影响promise2
+    </script>
+</body>
+</html>

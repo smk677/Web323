@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <div id="box"></div>
+    <script>
+           
+           function getData(){
+              return new Promise((resolve,reject)=>{
+                   setTimeout(function(){
+                    // resolve([{name:'ls',age:18}])
+                    reject('网络异常');
+                   },1000)
+               })
+           }
+           
+        //需求：点击按钮，给服务器发送请求，请求成功，就将数据渲染到页面，如果请求失败，则提示用户网络异常
+         let btn=document.getElementById('btn');
+         let box=document.getElementById('box');
+         btn.onclick=async function(){
+             try {
+                let res= await getData();//await当promise实例对象成功时，它才会执行，不然后面的代码会一直等待，执行结果为reject，会直接退出await
+                //获取请求成功将数据渲染到页面
+                let str=`<h1>${res[0].name}</h1><h1>${res[0].age}</h1>`
+                box.innerHTML=str;
+             } catch (error) {
+                 //如果失败告诉用户网络异常
+                 let str=`<h1>${error}</h1>`
+                box.innerHTML=str;
+             }
+            
+         }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //交换两个变量
+       /*  let a=1;
+        let b=2;
+        [b,a]=[a,b];
+        console.log(a,b) */
+        
+       /*  let [foo = hoo, hoo = 2] = [];//执行完等号右边，左边是从左往右执行的，所以不能在声明之前用他
+        console.log(foo,hoo)//can't access lexical declaration 'hoo' before initialization
+         
+        let [hoo = 2,foo = hoo] = [];
+        console.log(foo,hoo)//2,2
+       */
+    //解构赋值的方法
+   /*  let [a,b,c,d]=[1,2,3,4]
+    console.log(a,b,c,d) */
+
+    // 解构失败返回undefined
+  /*   let [a,b]=[1];
+    //解构对象
+    let {log}=console;
+    log(a,b)//1 undefined */
+
+    // 不完全解构也能成功
+    /* let [a,b]=[1,2,3];
+    //解构对象
+    let {log}=console;
+    log(a,b)//1 2 */
+
+    // 可以给解构设置默认值
+   /*  let [a=10,b=20]=[13]//如果没给他赋值，就会用他的默认值
+    // 解构console对象的log属性
+    let {log}=console;
+    log(a,b)//13 20 */
+
+    //可以使用rest参数(值比变量多)
+   /*  let [a,b,...rest]=[1,2,3,4,5,6,7,8]
+    // 解构console对象的log属性
+    let {log}=console;
+    log(a,b,rest)//1,2,[3,4,5,6,7,8] */
+
+    // 多维数组只要值一一对应也可以解构
+     /*  let [a,[b,c,d],e]=[1,[2,3,4],5];
+    //   解构console对象的log属性
+     let {log}=console;
+     log(a,b,c,d,e) */
+    </script>
+</body>
+</html>

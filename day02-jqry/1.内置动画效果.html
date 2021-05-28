@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+             background: bisque;
+             /* display: none; */
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击动画效果</button>
+    <div id="box"></div>
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        /* 
+         jQuery的动画效果（内置）：
+          都有三个参数：
+            参数1：时间（用时间表示速度）
+            参数2：执行动画的方式（linear,swing）
+            参数3：回调函数
+            显示：
+            .show():改变的是width，height，opacity
+            .slideDown():改变的是height    向下展开(滑动)
+            .fadeIn():改变的是（透明度）opacity  淡入
+
+            隐藏：
+            .hide():高度，宽度，透明度（慢慢变小直到为0）
+            .slideUp()：高度（慢慢变小直到为0）向上收缩(卷动)
+            .fadeOut()：透明度（慢慢变小直到为0）  淡出
+
+            显示和隐藏的切换：
+            关于高度，宽度，透明度三者：.toggle():如果是显示执行操作就变为隐藏，反之显示
+            关于高度：slideToggle()
+            关于透明度:fadeTooggle()
+        */
+        $("#btn").click(function(){
+           /*  $('#box').show(3000,"linear",function(){
+                console.log("动画执行完毕！")
+            }) */
+           /*  $('#box').hide(3000,"linear",function(){
+                console.log("动画执行完毕！")
+            }) */
+          /*   $('#box').toggle(3000,"linear",function(){
+                console.log("动画执行完毕！")
+            }) */
+           /*  $('#box').slideUp(3000,"linear",function(){
+                console.log("动画执行完毕！")
+            }) */
+            /* $('#box').slideDown(3000,"linear",function(){
+                console.log("动画执行完毕！")
+            }) */
+           /*  $('#box').slideToggle(3000,"linear",function(){
+                console.log("动画执行完毕！")
+            }) */
+            /* $('#box').fadeIn(2000,"linear",function(){
+                console.log("动画执行完毕！")
+            }) */
+            /* $('#box').fadeOut(2000,"linear",function(){
+                console.log("动画执行完毕！")
+            }) */
+            /* $('#box').fadeToggle(2000,"linear",function(){
+                console.log("动画执行完毕！")
+            })*/
+        })
+    </script>
+</body>
+</html>

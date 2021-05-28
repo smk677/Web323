@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #father{
+           position: relative;
+           margin: auto;
+           width: 250px;
+           /* overflow: hidden; */
+        }
+        .inner {
+            overflow: auto;
+        }
+        .Img{
+            width:1500px;
+            display: flex;
+            font-size: 0;
+        }
+        .Img img{
+            width: 250px;
+            height: 500px;
+        }
+        .lt,.gt{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color:gold;
+            border-radius:50%;
+            top:50%;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            transform: translateY(50%);
+        }
+        .lt{
+           left: 10px;
+        }
+        .gt{
+           right: 10px;
+        }
+        ul{
+            display: flex;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        ul li{
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgb(255,255,255,.4);
+            margin:5px ;
+        }
+        ul li.active{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+      <div class="inner">
+       <div class="Img">
+                <img src="./images/01.jpg" alt="">
+                <img src="./images/02.jpg" alt="">
+                <img src="./images/03.jpg" alt="">
+                <img src="./images/04.jpg" alt="">
+                <img src="./images/05.jpg" alt="">
+       </div>
+       <div class="lt">&lt;</div>
+       <div class="gt">&gt;</div>
+       <ul class="yuq">
+           <li class="active"></li>
+           <li></li>
+           <li></li>
+           <li></li>
+           <li></li>
+       </ul>
+      </div>
+    </div>
+    <script>
+      var oFar=document.querySelector('#father')
+      var oInner=document.querySelector('.inner')
+      var oImg=document.querySelector('.Img')
+      var oIMgs=document.querySelectorAll('.Img img')
+      var oLt=document.querySelector('.lt')
+      var oGt=document.querySelector('.gt')
+      var oLis=document.querySelectorAll('.yuq li')
+        var i=0;
+        setInterval(function(){
+            i++;
+            if(i>oIMgs.length-1){
+                i=0
+            }
+            oInner.scrollLeft=i*oIMgs[0].clientWidth
+        },2000)
+    </script>
+</body>
+</html>

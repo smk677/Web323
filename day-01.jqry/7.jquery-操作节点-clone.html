@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+      <span class="span">123</span>
+    </div>
+    <span>span</span>
+    <!-- 引包 -->
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        /* 
+         clone():赋值节点
+           clone(true)：参数可以为空，为空时表示只赋值元素和内容，不复制元素的事件，而加上true，表示这个元素附带的事件处理行为也要复制出来（如果子元素使用的时dom方式注册的话，那就无法克隆事件）
+        */
+       /*  $(".span").click(function(){
+            console.log("span的点击事件")
+        }) */
+        var oSpan=document.querySelector(".span")
+        oSpan.onclick=function(){
+           console.log("span的点击事件")
+        }
+        /* $("body").append($(".box").clone());//为空时表示只赋值元素和内容，不复制元素的事件 */
+        $("body").append($(".box").clone(true));//个元素附带的事件处理行为也复制出来(注意如果子元素使用的时dom方式注册的话，那就无法克隆事件)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <div id="box"></div>
+    <script src="../jquery-1.12.4.js"></script>
+    <script>
+        var flag=false;
+        $('#btn').click(function(){
+            if(flag==false){
+                $('#box').animate({
+                left:300,
+                top:100
+            },'linear')
+            flag=!flag;
+            }else{
+                $('#box').animate({
+                left:0,
+                top:0
+              },'linear')
+              flag=!flag
+            }
+           
+        })
+    </script>
+</body>
+</html>

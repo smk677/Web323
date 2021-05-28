@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* var oBox = document.getElementById('box');
+
+        function centes(e){
+            console.log(1);
+            console.log(this)
+            console.log(e)
+        }
+      
+        oBox.onmousemove=jl(centes,300);
+        
+
+         
+        function jl(fn,Time){
+            var lastTime=0;
+            return function(){
+                var newTime=Date.now();
+                //看门狗
+                if(newTime-lastTime<Time){
+                 return
+               }
+                lastTime=newTime
+                fn.call(this,arguments[0])
+            }
+        
+        }  */
+       /*  var a = function (val, index) {
+             console.log(index);
+             console.log(val);
+             return {
+                 fn: function (name) {
+                     return a(name, val)
+                 }
+             }
+         }
+         var b = a(0); //undefined
+         b.fn(1); //0
+         b.fn(2); //0
+         b.fn(3); //0
+
+         var c = a(0).fn(1).fn(2).fn(3);  */
+      /*    var x = 1;
+        var y = 2;
+
+        function show() {
+            var x = 2;
+            return {
+                x: x, //返回对象的时候 x已经解析为2了 将来把show的x改变了也不影响
+                fun: function (a, b) {
+                    x = a + b;
+                }
+            }
+        }
+        var obj = show();
+        obj.fun(x, y)
+        console.log(obj.x);
+        
+        console.log(x); */
+      /*   function Foo() {
+            var i = 0;
+            return function () {
+                alert(i++);
+            }
+        }
+        var f1 = Foo();
+        f2 = Foo();
+        f1(); //0
+        f1(); //1
+        f1();//2
+        f2(); //0 */
+        function test(a, b) {
+            b = a + 10;
+            alert(b);
+            return {
+                test: function (a, b) {
+                    return test(b, a);
+                }
+            }
+        }
+        var a = test(100, 200);
+        a.test(300);
+        a.test(400);
+
+       /*  var b = test(101).test(201).test(401);
+        var c = test(102).test(202, 302);
+        c.test();  */
+    </script>
+</body>
+
+</html>

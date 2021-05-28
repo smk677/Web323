@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //直接返回一个成功的promise
+        // console.log(Promise.resolve('dad'))
+
+        //直接返回一个失败的promise
+        // console.log(Promise.reject('dad'))
+        
+        //all 返回一个新的promise,当all里面的promise全部为成功时,返回的promise才会成功
+        // 只要all里面的promise有一个失败,则返回的promise就为失败,值为失败的值
+        // 格式:Promise.all([])
+        let promise1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('123')
+        }, 1000)
+       })
+       let promise2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject('345')
+        // resolve('456')
+        }, 1000)
+       })
+     /*   let prosime= Promise.all([promise1,promise2])
+       console.log(prosime) */
+
+       // allSettled 返回一个新的promise. 当多个promies都完成了,返回的promise就成功了
+       let promise = Promise.allSettled([promise1, promise2])
+    //    console.log(prosime) 
+     promise.then((value) => {
+        console.log('promise1和promise2的状态都完成了', value)
+      })
+    </script>
+</body>
+</html>

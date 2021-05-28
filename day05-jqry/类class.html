@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        传统的写法
+          继承：
+        */
+      /*   function Person(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        Person.prototype.say=function(){
+            console.log('我是你的'+this.name)
+        }
+   
+         function Son(name,age,score){
+             Person.call(this,name,age);
+             this.score=score;
+         }
+         //原型上的方法继承
+         Son.prototype=new Person();
+         
+        const p1 = new Person('zs', 18)
+        console.log(p1)
+        const stu1 = new Son('ls', 18, 100)
+        console.log(stu1)
+        stu1.say() */
+
+        // class 是语法糖,最终执行的时候,还是解析成构造函数的方式去执行
+        class Person{
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            //相当于给Person的原型添加了say方法
+            say(){
+              console.log('我是你的'+this.name)
+            }
+        }
+
+         /* 
+           注意：
+             一个类继承另一个类，可以不写constructor(构造器)，如果写了，一定要把super()写在第一行
+             一个类继承另一个类，可以不写constructor(构造器)，如果不写，js的底层会自动给我们加上constructor(){super()}
+             一个类如果不继承其他类，可以不写constructor，如果写了，一定不要加super()
+         */
+       /*  class Son {
+            constructor(name,age,score){
+                // super(name,age,score);
+                this.score=score;
+            }
+        } */
+        class Son extends Person{
+            constructor(name,age,score){
+                super(name,age,score);
+                this.score=score;
+            }
+        }
+
+        /* const p1 = new Person('zs', 18)
+        console.log(p1) */
+        const stu1 = new Son('ls', 18, 100)
+        console.log(stu1)
+        stu1.say()
+    </script>
+</body>
+</html>

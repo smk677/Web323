@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #person{
+          margin: auto;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 300px;
+          height:400px;
+          /* border: 1px solid black; */
+      }
+      #bt{
+          margin: 0;
+          width: 100%;
+          height: 50px;
+          text-align: center;
+          line-height: 50px;
+          background-color: blanchedalmond;
+      }
+      #box{
+          width: 100%;
+          /* height: 350px; */
+          height: 0px;
+          background-color: blueviolet;
+          /* display: none; */
+          display: black;
+      }
+    </style>
+</head>
+<body>
+    <div id="person">
+    <h2 id="bt">标题</h2>
+    <div id="box"></div>
+  </div>
+  <script>
+      var oBt=document.querySelector('#bt')
+      var oBox=document.querySelector('#box')
+      var oPes=document.querySelector('#person')
+      var timer=null
+      let timer1=null
+    /*   oBt.onmouseenter=function(){
+          clearTimeout(timer)
+          oBox.style.display='block'
+      }
+      oPes.onmouseleave=function(){
+          timer=setTimeout(function(){
+            oBox.style.display='none'
+          },300)
+        } */
+    
+        oBt.onmouseenter=function(){
+                clearTimeout(timer)
+                clearTimeout(timer1)
+            //初始位置
+            let height3=getComputedStyle(oBox,null).height
+            // console.log(height3)
+            let height1=Number(height3.slice(0,1))
+            // console.log(height1)
+            //结束位置
+            let height2=350;
+            //开始步数
+            let step=0
+            //总共的步数
+            let allstep=40
+            //每一步走的距离
+            let everyStep=(height2-height1)/allstep
+            // console.log(everyStep)
+            timer=setInterval(function(){
+             step++;
+             if(step>=allstep){
+                clearTimeout(timer)
+             }
+             height1+=everyStep
+            //  console.log(height1)
+             oBox.style.height=height1+'px'
+            //  oBox.style.height=350+'px'
+          },10)       
+      }
+      oPes.onmouseleave=function(){
+                clearTimeout(timer)
+                clearTimeout(timer1)
+            //初始位置
+            let height3=getComputedStyle(oBox,null).height
+            // console.log(height3)
+            let height1=Number(height3.slice(0,height3.length-2))
+            console.log(height1)
+            //结束位置
+            let height2=0;
+            //开始步数
+            let step=0
+            //总共的步数
+            let allstep=40
+            //每一步走的距离
+            let everyStep=(height1-height2)/allstep
+            // console.log(everyStep)
+            timer1=setInterval(function(){
+             step++;
+             if(step>=allstep){
+                clearTimeout(timer1)
+             }
+             height1-=everyStep
+            //  console.log(height1)
+             oBox.style.height=height1+'px'
+            //  oBox.style.height=350+'px'
+          },10)       
+      }
+  </script>
+</body>
+</html>
